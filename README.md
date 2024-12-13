@@ -3,10 +3,12 @@
 <div align="center">
   <img src="https://bc.game/modules/static2/assets/verify-41354dd7.png" width="100" />
   <img src="https://bc.game/assets/logo/logo_small_festival.png" width="100" />
-  <img src="https://bc.game/modules/games2/assets/trenball_green-c1dca964.png" width="100" />
-</div>
+
 
 ## 🚀 Crash Game Simulation Platform
+
+  <img src="https://bc.game/modules/games2/assets/trenball_green-c1dca964.png" width="100" />
+</div>
 
 **Live Demo**: [BC Game Crash Predictor](https://bc-game-crush-predector.vercel.app)
 
