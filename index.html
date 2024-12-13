@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BC Game Crash Predictor | Advanced ML Simulator</title>
+    <title>BC Game Crash Simulator | Advanced ML Predictor</title>
     
     <!-- SEO Optimization -->
-    <meta name="description" content="Advanced machine learning crash game predictor with real-time probabilistic analysis and educational insights.">
-    <meta name="keywords" content="BC Game, Crash Predictor, Machine Learning, Gambling Simulation, Risk Analysis">
+    <meta name="description" content="Advanced machine learning crash game simulator with real-time prediction and educational insights.">
+    <meta name="keywords" content="BC Game, Crash Simulator, Machine Learning, Gambling, Risk Analysis">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://bc-game-crash-predictor.vercel.app">
+    <link rel="canonical" href="https://bc-game-crash-simulator.vercel.app">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bc-game-crash-predictor.vercel.app">
-    <meta property="og:title" content="BC Game Crash Predictor | Advanced ML Simulator">
-    <meta property="og:description" content="Advanced machine learning crash game predictor with real-time probabilistic analysis and educational insights.">
+    <meta property="og:url" content="https://bc-game-crash-simulator.vercel.app">
+    <meta property="og:title" content="BC Game Crash Simulator | Advanced ML Predictor">
+    <meta property="og:description" content="Advanced machine learning crash game simulator with real-time prediction and educational insights.">
     <meta property="og:image" content="https://bc.game/assets/logo/logo_small_festival.png">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://bc-game-crash-predictor.vercel.app">
-    <meta name="twitter:title" content="BC Game Crash Predictor">
-    <meta name="twitter:description" content="Advanced machine learning crash game predictor with real-time probabilistic analysis and educational insights.">
+    <meta name="twitter:url" content="https://bc-game-crash-simulator.vercel.app">
+    <meta name="twitter:title" content="BC Game Crash Simulator">
+    <meta name="twitter:description" content="Advanced machine learning crash game simulator with real-time prediction and educational insights.">
+    <meta name="twitter:image" content="https://bc.game/assets/logo/logo_small_festival.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://bc.game/assets/logo/logo_small_festival.png">
@@ -33,6 +34,7 @@
     
     <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.2.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
@@ -74,13 +76,13 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <img src="https://bc.game/assets/logo/logo_small_festival.png" alt="BC Game Logo" class="w-10 h-10">
-                <h1 class="text-2xl font-bold text-green-400">Crash Predictor</h1>
+                <h1 class="text-2xl font-bold text-green-400">Crash Simulator</h1>
             </div>
             <nav>
                 <ul class="flex space-x-4">
                     <li><a href="#" class="text-gray-300 hover:text-green-400">Home</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-green-400">ML Model</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-green-400">About</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-green-400">ML Predictor</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-green-400">Algorithm</a></li>
                 </ul>
             </nav>
         </div>
@@ -90,10 +92,54 @@
     <main class="flex-grow container mx-auto px-4 py-8">
         <div class="glass-morphism p-8 rounded-xl shadow-2xl max-w-4xl mx-auto">
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Prediction Controls -->
+                <!-- Game Simulation -->
                 <div>
-                    <h2 class="text-2xl font-bold mb-6 text-green-400">Prediction Parameters</h2>
+                    <h2 class="text-2xl font-bold mb-6 text-green-400">Game Simulation</h2>
                     
+                    <!-- Game Inputs -->
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Seed Input</label>
+                            <input 
+                                type="text" 
+                                id="seedInput" 
+                                placeholder="Enter seed hash" 
+                                class="w-full p-2 bg-gray-800 text-white rounded-lg"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Salt (Optional)</label>
+                            <input 
+                                type="text" 
+                                id="saltInput" 
+                                placeholder="Enter salt (hex string)" 
+                                class="w-full p-2 bg-gray-800 text-white rounded-lg"
+                            >
+                        </div>
+                        
+                        <button 
+                            onclick="simulateGameResult()" 
+                            class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition duration-300 animate-pulse-custom"
+                        >
+                            🔁 Simulate Game
+                        </button>
+                    </div>
+                    
+                    <!-- Simulation Results -->
+                    <div id="resultContainer" class="bg-gray-800 p-6 rounded-lg mt-6">
+                        <h3 class="text-xl font-semibold text-green-400 mb-4">Game Results</h3>
+                        <div id="resultDetails" class="text-gray-300">
+                            <p>Waiting for simulation...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ML Prediction -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 text-green-400">Advanced ML Prediction</h2>
+                    
+                    <!-- Prediction Controls -->
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-300">Multiplier Range</label>
@@ -113,8 +159,7 @@
                             <input 
                                 type="range" 
                                 id="riskTolerance" 
-                                min="0" 
-                                max="100" 
+                                "how much she can cash out"
                                 value="50" 
                                 class="w-full h-2 bg-gray-700 rounded-lg"
                             >
@@ -126,138 +171,153 @@
                         onclick="runAdvancedPrediction()" 
                         class="mt-6 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition duration-300 animate-pulse-custom"
                     >
-                        🔮 Advanced Prediction
+                        🔮 Advanced ML Prediction
                     </button>
-                </div>
-                
-                <!-- Prediction Results & Chart -->
-                <div>
-                    <div id="predictionResult" class="bg-gray-800 p-6 rounded-lg mb-4">
-                        <h3 class="text-xl font-semibold text-green-400 mb-4">Prediction Analysis</h3>
-                        <div id="resultDetails" class="text-gray-300">
-                            <p>Waiting for prediction...</p>
-                        </div>
-                    </div>
-                    <canvas id="probabilityChart" class="w-full h-64"></canvas>
-                </div>
-            </div>
+                    
+                    <!-- Prediction Results -->
+                    <div id="mlPrediction Results">
+    <div class="bg-gray-800 p-6 rounded-lg mt-6">
+        <h3 class="text-xl font-semibold text-green-400 mb-4">Prediction Insights</h3>
+        <div id="mlResultDetails" class="text-gray-300">
+            <p>Waiting for prediction...</p>
         </div>
-    </main>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-opacity-90 backdrop-blur-sm p-6 border-t border-gray-800">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-gray-400">
-                © 2024 Rekt Developer | Educational Simulator
-            </div>
-            <div class="flex space-x-4">
-                <a href="https://t.me/RektDevelopers" target="_blank" class="text-gray-300 hover:text-green-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221-1.731 8.608c-.1.493-.381.611-.777.379l-2.714-2.007-1.304 1.256c-.144.145-.265.267-.545.267l.192-2.816-5.065-1.448c-.474-.135-.481-.474.106-.707l19.725-7.616c.385-.175.752.117.648.579z"/>
-                    </svg>
-                </a>
-            </div>
+<!-- Prediction Chart -->
+<canvas id="predictionChart" class="w-full h-64"></canvas>
+</div>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-opacity-90 backdrop-blur-sm p-6 border-t border-gray-800">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="text-gray-400">
+            © 2024 BC Game Crash Simulator | Educational Use Only
         </div>
-    </footer>
+        <div class="flex space-x-4">
+            <a href="https://twitter.com/BCGameDev" class="text-gray-400 hover:text-green-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0 1.53 3.14A10.9 10.9 0 0 1 13 21.74 4.52 4.52 0 0 0 4.26 23 3.23 3.23 0 0 1-3.26.78M1 14C1 10.01 4.99 7 9 7s8 3.01 8 7-4.99 7-9 7-9-3.01-9-7 3.01-9 7zm3.44-6.05l-3.22 2.15.83 4.73 3.35-2.82 1-3.24-2.2-1.42-3.23-.7-2.85.7zm3.44 7.42c-1.15.23-2.3.76-.11-1.76-1.76c.45-.88 1-1.37 1-2v-.34c-4.96 1.31-6.22 7.03-6.22 13.71c0 2.71.82 5.04 2.25 6.57a4.14 4.14 0 0 1-1.85-7.82 4.22 4.22 0 0 1-1.27-8.43c1.25 1.25 2.69 1.25 4.12 0z"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        class AdvancedCrashPredictor {
-            constructor() {
-                this.model = null;
-                this.probabilityChart = null;
-                this.initializeModel();
-                this.initializeProbabilityChart();
-            }
+<script>
+    // Advanced Game Simulation
+    const gameResult = (seed, salt = '') => {
+        const nBits = 52;
+        const hmac = CryptoJS.HmacSHA256(CryptoJS.enc.Hex.parse(seed), salt);
+        seed = hmac.toString();
+        seed = seed.slice(0, nBits / 4);
+        const r = parseInt(seed, 16);
+        let X = r / Math.pow(2, nBits);
+        X = 99 / (1 - X);
+        return Math.max(1, X);
+    };
 
-            async initializeModel() {
-                this.model = tf.sequential({
-                    layers: [
-                        tf.layers.dense({units: 64, activation: 'relu', inputShape: [6]}),
-                        tf.layers.dropout({rate: 0.2}),
-                        tf.layers.dense({units: 32, activation: 'relu'}),
-                        tf.layers.dense({units: 1, activation: 'linear'})
-                    ]
-                });
+    // Advanced ML Predictor
+    class AdvancedCrashPredictor {
+        constructor() {
+            this.model = null;
+            this.predictionChart = null;
+            this.initializeModel();
+            this.initializePredictionChart();
+        }
 
-                this.model.compile({
-                    optimizer: tf.train.adam(0.001),
-                    loss: 'meanSquaredError'
-                });
-            }
+        async initializeModel() {
+            this.model = tf.sequential({
+                layers: [
+                    tf.layers.dense({units: 64, activation: 'relu', inputShape: [6]}),
+                    tf.layers.dropout({rate: 0.2}),
+                    tf.layers.dense({units: 32, activation: 'relu'}),
+                    tf.layers.dense({units: 1, activation: 'linear'})
+                ]
+            });
+            await this.model.loadWeights('model/crash_predictor_model.json');
+        }
 
-            initializeProbabilityChart() {
-                const ctx = document.getElementById('probabilityChart').getContext('2d');
-                this.probabilityChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: [],
-                        datasets: [{
-                            label: 'Crash Probability',
-                            data: [],
-                            borderColor: 'rgb(74, 222, 128)',
-                            backgroundColor: 'rgba(74, 222, 128, 0.2)'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100
-                            }
+        initializePredictionChart() {
+            const ctx = document.getElementById('predictionChart').getContext('2d');
+            this.predictionChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Crash Probability',
+                        data: [],
+                        borderColor: 'rgb(74, 222, 128)',
+                        backgroundColor: 'rgba(74, 222, 128, 0.2)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
                         }
                     }
-                });
-            }
-
-            predict(inputs) {
-                const tensor = tf.tensor2d([inputs]);
-                const prediction = this.model.predict(tensor);
-                const result = prediction.dataSync()[0];
-                return Math.max(1, result * Math.random() * 2);
-            }
-
-            updateProbabilityChart(probabilities) {
-                this.probabilityChart.data.labels = probabilities.map((_, i) => `Scenario ${i + 1}`);
-                this.probabilityChart.data.datasets[0].data = probabilities;
-                this.probabilityChart.update();
-            }
+                }
+            });
         }
 
-        const predictor = new AdvancedCrashPredictor();
-
-        function runAdvancedPrediction() {
-            const multiplier = parseFloat(document.getElementById('multiplierRange').value);
-            const riskTolerance = parseFloat(document.getElementById('riskTolerance').value);
-
-            const predictionInputs = [
-                multiplier,
-                riskTolerance,
-                Math.random(),
-                new Date().getHours(),
-                new Date().getDay(),
-                Math.random() * 100
-            ];
-
-            const safePrediction = predictor.predict(predictionInputs);
-            const probabilities = Array.from({length: 5}, () => Math.random() * 100);
-
-            document.getElementById('resultDetails').innerHTML = `
-                <p class="text-green-400">Predicted Safe Multiplier: ${safePrediction.toFixed(2)}x</p>
-                <p class="text-gray-400 text-sm mt-2">Risk-adjusted probabilistic analysis</p>
-            `;
-
-            predictor.updateProbabilityChart(probabilities);
+        predict(inputs) {
+            const tensor = tf.tensor2d([inputs]);
+            const prediction = this.model.predict(tensor);
+            const result = prediction.dataSync()[0];
+            return Math.max(1, result);
         }
 
-        // Event Listeners
-        document.getElementById('multiplierRange').addEventListener('input', function() {
-            document.getElementById('multiplierValue').textContent = `${this.value}x`;
-        });
+        updatePredictionChart(probabilities) {
+            this.predictionChart.data.labels = probabilities.map((_, i) => `Prediction ${i + 1}`);
+            this.predictionChart.data.datasets[0].data = probabilities;
+            this.predictionChart.update();
+        }
+    }
 
-        document.getElementById('riskTolerance').addEventListener('input', function() {
-            document.getElementById('riskToleranceValue').textContent = `${this.value}%`;
-        });
-    </script>
+    const mlPredictor = new AdvancedCrashPredictor();
+
+    // Simulation and Prediction Functions
+    function simulateGameResult">
+        const multiplier = parseFloat(document.getElementById('multiplierRange').value);
+        const riskTolerance = parseFloat(document.getElementById('riskTolerance').value);
+
+        const predictionInputs = [
+            multiplier,
+            riskTolerance,
+            Math.random(),
+            new Date().getHours(),
+            new Date().getDay(),
+            Math.random() * 100
+        ];
+
+        const prediction = mlPredictor.predict(predictionInputs);
+
+        document.getElementById('mlResultDetails').innerHTML = `
+            <p class="text-green-400">🎯 Predicted Multiplier: ${prediction.toFixed(2)}x</p>
+            <p class="text-gray-400 text-sm mt-2">Risk-adjusted prediction based on provided parameters.</p>
+        `;
+
+        mlPredictor.updatePredictionChart([prediction]);
+    }
+
+    // Game Simulation
+    function simulateGameResult() {
+        const seed = document.getElementById('seedInput').value || CryptoJS.lib.WordArray.random(32).toString();
+        const salt = document.getElementById('saltInput').value || '';
+
+        const multiplier = gameResult(seed, salt);
+
+        document.getElementById('resultDetails').innerHTML = `
+            <p class="text-green-400">🎰 Simulated Multiplier: ${multiplier.toFixed(2)}x</p>
+            <p class="text-gray-400 text-sm mt-2">Seed: ${seed}</p>
+            ${salt ? `<p class="text-gray-400 text-sm">Salt: ${salt}</p>` : ''}
+        `;
+    }
+</script>
 </body>
 </html>
