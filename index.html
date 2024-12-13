@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Advanced BC Game Crash Predictor">
+  <meta name="keywords" content="BC Game, Crash Predictor, Gaming, Analysis">
+  <meta name="author" content="Rekt Developer">
+  <title>BC Game Crash Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and Base Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #1A1D29, #13151D);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      text-align: center;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: #1E212D;
+      border-bottom: 2px solid #2A2D3C;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #4ADE80;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin: 0 10px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #D1D5DB;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #4ADE80;
+    }
+
+    /* Main Section */
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .predictor-container {
+      background: #1E212D;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .predictor-container h2 {
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #3B4252;
+      background: #13151D;
+      color: #fff;
+    }
+    .predict-btn {
+      width: 100%;
+      padding: 10px;
+      background: #4ADE80;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1A1D29;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .predict-btn:hover {
+      background: #3BC977;
+    }
+
+    /* Result Section */
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #292C3B;
+      border-radius: 4px;
+    }
+    .result h3 {
+      color: #4ADE80;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1E212D;
+      border-top: 2px solid #2A2D3C;
+    }
+    footer p {
+      color: #A0AEC0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">BC Predictor</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Main Section -->
+  <main>
+    <div class="predictor-container">
+      <h2>Crash Predictor</h2>
+      <div class="input-group">
+        <label for="multiplier">Enter Multiplier Prediction (1.2 - 30):</label>
+        <input type="number" id="multiplier" placeholder="e.g., 2.5" min="1.2" max="30" step="0.1">
+      </div>
+      <div class="input-group">
+        <label for="trend">Trend Analysis Score (Optional):</label>
+        <input type="number" id="trend" placeholder="e.g., 75">
+      </div>
+      <button class="predict-btn" onclick="predictCrash()">Predict</button>
+      <div class="result" id="result">
+        <h3>Result: --</h3>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 Rekt Developer. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function predictCrash() {
+      const multiplier = document.getElementById('multiplier').value;
+      const trend = document.getElementById('trend').value;
+
+      // Simulating a prediction logic
+      if (multiplier && trend) {
+        document.getElementById('result').innerHTML = `<h3>Predicted Safe Multiplier: ${(Math.random() * multiplier).toFixed(2)}</h3>`;
+      } else {
+        document.getElementById('result').innerHTML = '<h3>Please fill in both fields!</h3>';
+      }
+    }
+  </script>
+</body>
+</html>
